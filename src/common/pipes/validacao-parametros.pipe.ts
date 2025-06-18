@@ -1,8 +1,8 @@
 import { ArgumentMetadata, PipeTransform, Logger, BadRequestException } from "@nestjs/common";
 
-export class JogadoresValidacaoParametrosPipe implements PipeTransform {
+export class ValidacaoParametrosPipe implements PipeTransform {
 
-    private readonly logger = new Logger(JogadoresValidacaoParametrosPipe.name);
+    private readonly logger = new Logger(ValidacaoParametrosPipe.name);
 
     transform(value: any, metadata: ArgumentMetadata) {
 
