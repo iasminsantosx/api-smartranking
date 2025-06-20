@@ -66,8 +66,16 @@ export class CategoriasService {
         if (jogadorCadastradoCategoria.length) throw new BadRequestException(`Jogador ${idJogador} já cadastrado na categoria ${categoria}`);
 
         categoriaEncontrada.jogadores.push(idJogador);
-        
+
         await categoriaEncontrada.save();
+
+    }
+
+    async consultarCategoriaDoJogador(idJogador: string): Promise<Categoria> {
+
+        await this.jogadoresService.consultarJogadorPeloId(idJogador);
+
+        return await this.categoriaModel.findOne().where('jogadores').in([idJogador]).exec();
 
     }
 }

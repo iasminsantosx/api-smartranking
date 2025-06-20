@@ -5,11 +5,14 @@ export const DesafioSchema = new mongoose.Schema({
     status: { type: String },
     dataHoraSolicitacao: { type: Date },
     dataHoraResposta: { type: Date },
-    solicitante: { type: String },
-    categoria: {},
+    solicitante: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Jogador"
+    },
+    categoria: { type: String },
     jogadores: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Jogador"
     }],
     partida: []
-}, { timestamps: true, collection: 'categorias' })
+}, { timestamps: true, collection: 'desafios' })
